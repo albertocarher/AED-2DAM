@@ -2,12 +2,12 @@
 
 Antes de empezar la tarea, se creara un nuevo usuario en la maquina virtual con el nombre del alumno. Para ello utilizaremos el comando su - para acceder a root y poder crear el nuevo usuario con su contraseña.
 
-![Creación del nuevo usuario](img/creacion-usuario.png)
+![Creación del usuario](img/creacion-usuario.png)
 
 Ahora, al entrar con el nuevo usuario intentaremos usar la terminal para instalar primero JDK.
 No nos dejará debido a que el nuevo usuario no tendrá permisos de sudo para ejecutar comandos, por lo que primero habrá que darle permisos para ello.
 
-![Concesión de permisos sudo](img/Derechos-sudo.png)
+![Concesión de permisos ](img/Derechos-sudo.png)
 
 Después de haber dados los permisos, comprobaremos si hay un jdk y Maven, Maven no se encuentra instalado por lo que usaremos estos comandos:
 
@@ -21,9 +21,9 @@ En cuanto al java, se encuentra el 21 en la maquina virtual aunque luego en el p
 
 ![Error al instalar openjdk-17-jdk](img/java-actual.png)
 
-![Añadido del repositorio de Adoptium para instalar el JDK 17](img/info-17.png)
+![Añadido JDK 17](img/info-17.png)
 
-![Instalación del JDK 17 (Temurin) desde el repositorio de Adoptium](img/descarga-17.png)
+![Instalación del JDK 17](img/descarga-17.png)
 
 Para trabaja con el código se instalará el intellij con este comando:
 
@@ -33,7 +33,7 @@ sudo snap install intellij-idea-ultimate --classic
 
 Empezaremos creando la estructura del proyecto como se nos ha descrito en la actividad y la modificacion del pom, además de la modificacion del Main.
 
-![Estructura del proyecto en IntelliJ](img/Esquema-del-proyecto.png)
+![Estructura del proyecto](img/Esquema-del-proyecto.png)
 
 Se nos imprimira un mensaje al ejecutar este codigo:
 
@@ -43,21 +43,21 @@ java -cp target/classes com.codelearn.tareas.Main
 find target/classes -type f
 ```
 
-![Resultado de mvn compile y find target/classes](img/Target.png)
+![Resultado de mvn compile](img/Target.png)
 
 Ejecutaremos clean que eliminara los resultados anteriores y nos dará unos nuevos.
 
 Hemos incorporado gson, se modificará el Main y se comprobará como Maven configura el classpath de compilación
 
-![Dependencia de gson añadida al pom y build correcto](img/se-ha-añadido-gson.png)
+![Dependencia de gson](img/se-ha-añadido-gson.png)
 
 Se han buscado los archivos solicitados y se ha visto como install actua sobre un repositorio local.
 
-![Archivos de gson encontrados en el repositorio local (~/.m2)](img/gson-encontrado.png)
+![Archivos de gson](img/gson-encontrado.png)
 
 Se ha creado la carpeta config con settings-publico.xml y se ha obtenido repositorio publico entre los perfiles activos.
 
-![settings-publico.xml y perfil "repositorio-publico" activo](img/repositorio-publico.png)
+![settings-publico.xml](img/repositorio-publico.png)
 
 Se ha modificado el pon con lo siguiente:
 
@@ -136,7 +136,7 @@ A continuación se ha añadido al pom:
 <maven-wrapper-plugin.version>3.3.2</maven-wrapper-plugin.version>
 ```
 
-![Propiedades de versiones añadidas al pom](img/Politica-de-bibliotecas.png)
+![Propiedades de versiones](img/Politica-de-bibliotecas.png)
 
 También se añadio:
 
@@ -161,7 +161,7 @@ También se añadio:
 
 Se han modificados algunos plugins para que obtengan la version de lo anterior puesto y se han añadido dos plugins para que los comandos posteriores utilicen las versiones declaradas:
 
-![Plugins del pom usando las versiones declaradas como propiedades](img/plugin-modificado.png)
+![Plugins del pom](img/plugin-modificado.png)
 
 ```xml
 <plugin>
@@ -202,13 +202,13 @@ public class GestorTareas {
 
 y se ha creado el test correspondiente al main, comprobando en el proceso su funcionamiento.
 
-![GestorTareasTest.java y resultado de los tests](img/Resultado-test.png)
+![GestorTareasTest.java](img/Resultado-test.png)
 
-![Ejecución de los tests con mvn test](img/mvn-test.png)
+![Ejecución de los tests](img/mvn-test.png)
 
 Se ha comprobado un error a la hora de compilar ya se debia comprobar que pasaba cuando quitabamos titulos.add(titulo) del main.
 
-![Error al quitar titulos.add(titulo) del método anadir](img/Error-titulos-add.png)
+![Error al quitar titulos.add(titulo)](img/Error-titulos-add.png)
 
 Se ha creado el aplicacion.properties y se ha puesto en el nombre=Gestor de tareas. Tambien se ha vuelto a modificar el main con lo siguiente:
 
@@ -234,7 +234,7 @@ public class Main {
 }
 ```
 
-![Main.java modificado con Gson y aplicacion.properties, y contenido del jar](img/properties.png)
+![Main.java modificado con Gson](img/properties.png)
 
 Se ha obtenido el mensaje correspondiente al ejecutar:
 
@@ -243,9 +243,9 @@ mvn clean package
 jar tf target/gestor-tareas-1.0.0-SNAPSHOT.jar
 ```
 
-![mvn clean package con BUILD SUCCESS](img/mvn-clean-verify.png)
+![mvn clean package](img/mvn-clean-verify.png)
 
-![Ejecución en modo offline (mvn -o package)](img/modo-offline.png)
+![Ejecución en modo offline](img/modo-offline.png)
 
 Se ha vuelto a modificar el pom con:
 
@@ -268,6 +268,6 @@ mvn dependency:copy-dependencies -DincludeScope=runtime -DoutputDirectory=target
 java -cp "target/gestor-tareas-1.0.0-SNAPSHOT.jar:target/lib/*" com.codelearn.tareas.Main
 ```
 
-![JSON resultante "Gestor de tareas"](img/informacion-apartado-16.png)
+!["Gestor de tareas"](img/informacion-apartado-16.png)
 
 Al hacer esto nos ha imprimido un JSON que pone Gestor de tareas.
